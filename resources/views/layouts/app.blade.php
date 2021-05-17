@@ -18,6 +18,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+        .custom-active {
+            color: #000000;
+            font-weight: bolder;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -72,7 +79,16 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a class="{{ request()->is('user-detail')? 'custom-active' : '' }}" href="{{route('user-detail.index')}}">Heading</a></li>
+                    <li class="breadcrumb-item"><a class="{{ request()->is('education')? 'custom-active' : '' }}" href="{{route('education.index')}}">Education</a></li>
+                    <li class="breadcrumb-item"><a class="{{ request()->is('experience') ? 'custom-active' : '' }}" href="{{route('experience.index')}}">Experience</a></li>
+                    <li class="breadcrumb-item"><a class="{{ request()->is('skill')? 'custom-active' : '' }}" href="{{route('skill.index')}}">Skill</a></li>
+
+                </ol>
+            </nav>
             @yield('content')
         </main>
     </div>
